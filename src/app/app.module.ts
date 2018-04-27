@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
 
 import { MyApp } from './app.component';
@@ -16,11 +15,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { ProdutoService } from './../services/produto';
 
 
-const cloudSettings : CloudSettings = {
-  'core': {
-    'app_id':'ebf4398f'
-  }
-};
 
 
 @NgModule({
@@ -28,15 +22,13 @@ const cloudSettings : CloudSettings = {
     MyApp,
     HomePage,
     ListPage,
-    DetailsPage,
-    CloudModule
+    DetailsPage
   ],
   
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),
-    CloudModule.forRoot(cloudSettings)
+    IonicModule.forRoot(MyApp)
   ],
   
   bootstrap: [IonicApp],
