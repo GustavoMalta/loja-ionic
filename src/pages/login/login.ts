@@ -4,9 +4,9 @@ import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'login.html'
 })
-export class HomePage {
+export class LoginPage {
 
   constructor(
     public navCtrl: NavController,

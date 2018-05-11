@@ -10,11 +10,11 @@ export class ProdutoService {
    }
 
    listarProdutos() {
-      return this.http.get('http://localhost:3000/produto');
+      return this.http.get('//batima-pc:3000/produto');
    }
 
    obterProduto(codigo) {
-      return this.http.get('http://localhost:3000/produto/'+codigo);
+      return this.http.get('//batima-pc:3000/produto/'+codigo);
    }
 
 }

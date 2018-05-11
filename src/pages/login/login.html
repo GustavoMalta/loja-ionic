@@ -1,34 +1,68 @@
+<!--
+  Generated template for the LoginPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
+
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>login</ion-title>
   </ion-navbar>
+
 </ion-header>
 
+
 <ion-content padding>
-  <p *ngIf="auth.loading" text-center>Loading...</p>
-  <ng-template [ngIf]="!auth.loading">
-    <!-- Not loading, not logged in: show login button -->
-    <button
-      ion-button
-      block
-      color="primary"
-      *ngIf="!auth.loggedIn"
-      (click)="auth.login()">Log In</button>
-    <!-- Not loading, logged in: show profile and logout button -->
-    <ng-template [ngIf] = "auth.loggedIn">
-      <ion-card *ngIf="auth.user">
-        <img [src]="auth.user.picture">
-        <ion-card-content>
-          <ion-card-title>{{ auth.user.name }}</ion-card-title>
-          <pre>{{ auth.user | json }}</pre>
-        </ion-card-content>
-      </ion-card>
-      <button
-        ion-button
-        block
-        color="danger"
-        (click)="auth.logout()">Log Out</button>
-    </ng-template>
-  </ng-template>
+
+  <div *ngIf="!auth.isAutenticated()">
+    <h4> Inscreva-se ou Autentifique-se</h4>
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>E-mail</ion-label>
+        <ion-input type="text" [(ngModel)]= "email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Senha</ion-label>
+        <ion-input type="password" [(ngModel)]= "password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-grid>
+      <ion-row>
+          <ion-col width-50>
+            <button ion-button block(click)="register()">Inscrever-se</button>
+          </ion-col>
+          <ion-col width-50>
+            <button ion-button block(click)="login()">Entrar</button>         
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div *ngIf="auth.isAutenticated()">
+    <h4>Perfil de Usuario</h4>
+    <ion-list *ngIf="auth.isAutenticated()">
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input class "right" type="text" [(ngMdel)]="name></ion-input>"
+      </ion-item>   
+      <ion-item>
+        <ion-label fixed>Data de Nascimento</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY"[(ngModel)]="birthday"></ion-datetime>
+      </ion-item> 
+    </ion-list>
+
+    <ion-grid>
+      <ion-row>
+          <ion-col width-50>
+            <button ion-button color="secondary" block(click)="save()">Salvar</button>
+          </ion-col>
+          <ion-col width-50>
+            <button ion-button color="dark" block(click)="logout()">Sair</button>         
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
 
 </ion-content>
